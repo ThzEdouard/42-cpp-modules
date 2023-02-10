@@ -1,16 +1,25 @@
-
+# include "PhoneBook.hpp"
 # include <iostream>
-# include <string>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	std::string	str;
-	while (1)
+	std::string	input;
+	PhoneBook	rep;
+	int			index;
+
+	index = 0;
+	while (true)
 	{
-		std::cout << "ADD, SEARCH EXIT\n";
-		getline(std::cin, str);
-		if (str == "EXIT")
+		std::getline(std::cin >> std::ws, input);
+		if (input.compare("EXIT"))
 			break;
+		if (input.compare("ADD"))
+			index = rep.set_contact(index);
+		else if (input.compare("SEARCH"))
+			rep.view_rep();
+		else
+			std::cout << "ADD, SEARCH, EXIT";
 	}
+
 	return (0);
 }
