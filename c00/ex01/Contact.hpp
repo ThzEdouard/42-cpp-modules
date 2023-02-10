@@ -1,8 +1,11 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include <string>
 
+# include <iostream>
+# include <string>
+# include <iomanip>
+# include <stdlib.h>
 class Contact
 {
 private:
@@ -20,8 +23,9 @@ public:
 	std::string	get_pnumber();
 	std::string	get_dsecret();
 
-	void	set_contact();
+	int		set_contact();
 	void	view_contact();
+
 };
 
 #endif

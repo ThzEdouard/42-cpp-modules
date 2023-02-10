@@ -9,7 +9,7 @@ int	main(int argc, char **argv)
 		for(int i = 1; argv[i]; i++)
 			for(int y = 0; argv[i][y]; y++)
 				if (islower(argv[i][y]))
-					argv[i][y] -= 32;
+					argv[i][y] = toupper(argv[i][y]);
 			;
 		;
 		for(int i = 1; argv[i]; i++)

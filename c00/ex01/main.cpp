@@ -8,17 +8,21 @@ int	main(void)
 	int			index;
 
 	index = 0;
-	while (true)
+	while (1)
 	{
 		std::getline(std::cin >> std::ws, input);
-		if (input.compare("EXIT"))
+		if (std::cin.eof())
 			break;
-		if (input.compare("ADD"))
+		if (input == "EXIT")
+			break;
+		else if (input == "ADD")
 			index = rep.set_contact(index);
-		else if (input.compare("SEARCH"))
+		else if (input == "SEARCH")
 			rep.view_rep();
 		else
 			std::cout << "ADD, SEARCH, EXIT";
+		if (index == -1)
+			break ;
 	}
 
 	return (0);
