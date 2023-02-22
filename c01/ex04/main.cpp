@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 			{
 				ln.erase(found, std::strlen(argv[2]));
 				ln.insert(found, argv[3]);
-				found = ln.find(argv[2], found+1);
+				found += std::strlen(argv[3]);
+				found = ln.find(argv[2], found);
 			}
 			if (!afile.eof())
 				ln += "\n";
