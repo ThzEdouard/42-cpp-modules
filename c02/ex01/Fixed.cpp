@@ -50,3 +50,9 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
+
+std::ostream& operator<<(std::ostream& os, const Fixed& dt)
+{
+	os << dt._a;
+    return os;
+}

@@ -19,7 +19,10 @@ public:
 	float toFloat( void ) const;
 	int toInt( void ) const;
 	~Fixed();
+
+	friend std::ostream& operator<<(std::ostream& os, const Fixed& dt);
 };
+
 
 
 #endif
