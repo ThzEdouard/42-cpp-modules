@@ -2,6 +2,7 @@
 
 Contact::Contact()
 {
+	std::cout << "" << std::endl;
 }
 
 int	Contact::set_contact()
@@ -14,7 +15,22 @@ int	Contact::set_contact()
 	std::cout << "nickname : ";
 	std::getline(std::cin >> std::ws, this->nickname);
 	std::cout << "phone number : ";
-	std::getline(std::cin >> std::ws, this->p_number);
+	while (1)
+	{
+		int i;
+		std::getline(std::cin >> std::ws, this->p_number);
+		for(i = 0; i < (int)this->p_number.length(); i++)
+		{
+			if (!isdigit(this->p_number[i]))
+			{
+				std::cout << "phone number is not alfa numerique 0 . 9 !" << std::endl;
+				break;
+			}
+		}
+		if (!this->p_number[i])
+			break;
+	}
+
 	std::cout << "darkest secret : ";
 	std::getline(std::cin >> std::ws, this->d_secret);
 	std::cout << "========================================" << std::endl;
@@ -42,4 +58,5 @@ std::string	Contact::get_dsecret(){return this->d_secret;}
 
 Contact::~Contact()
 {
+	std::cout << "" << std::endl;
 }

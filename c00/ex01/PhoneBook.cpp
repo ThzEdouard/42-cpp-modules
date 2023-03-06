@@ -39,7 +39,7 @@ int	PhoneBook::view_rep()
 
 	std::cout << "|================================================================|" << std::endl;
 	std::cout << "|                                                                |" << std::endl;
-	std::cout << "|                                                                |" << std::endl;
+	std::cout << "|    index| Firt name| Last Name|  Nickname|    number|    secret|" << std::endl;
 	std::cout << "|                                                                |" << std::endl;
 	std::cout << "|================================================================|" << std::endl;
 	for(int i = 0; i < this->in; i++)
