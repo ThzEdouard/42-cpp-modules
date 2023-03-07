@@ -3,10 +3,12 @@
 PhoneBook::PhoneBook()
 {
 	this->in = 0;
+	std::cout << "PhoneBook Default constructor called" << std::endl;
 }
 
 PhoneBook::~PhoneBook()
 {
+	std::cout << "PhoneBook Destructor called" << std::endl;
 }
 
 int	PhoneBook::set_contact(int index)
