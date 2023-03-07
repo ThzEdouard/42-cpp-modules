@@ -2,22 +2,67 @@
 
 Contact::Contact()
 {
-	std::cout << "" << std::endl;
+	std::cout << "Contact Default constructor called" << std::endl;
 }
 
 int	Contact::set_contact()
 {
+	int i;
 	std::cout << "========================================" << std::endl;
-	std::cout << "firt name : ";
-	std::getline(std::cin >> std::ws, this->f_name);
-	std::cout << "last name : ";
-	std::getline(std::cin >> std::ws, this->l_name);
-	std::cout << "nickname : ";
-	std::getline(std::cin >> std::ws, this->nickname);
-	std::cout << "phone number : ";
 	while (1)
 	{
-		int i;
+		std::cout << "firt name : ";
+		std::getline(std::cin >> std::ws, this->f_name);
+		for(i = 0; i< (int)this->f_name.length(); i++)
+		{
+			if (!isprint(this->f_name[i]))
+			{
+				std::cout << "Is not alfanumerique !" << std::endl;
+				break;
+			}
+		}
+		if (i == (int)this->f_name.length())
+			break;
+		if (std::cin.eof())
+			return (0);
+	}
+	while (1)
+	{
+		std::cout << "last name : ";
+		std::getline(std::cin >> std::ws, this->l_name);
+		for(i = 0; i< (int)this->l_name.length(); i++)
+		{
+			if (!isprint(this->l_name[i]))
+			{
+				std::cout << "Is not alfanumerique !" << std::endl;
+				break;
+			}
+		}
+		if (i == (int)this->l_name.length())
+			break;
+		if (std::cin.eof())
+			return (0);
+	}
+	while (1)
+	{
+		std::cout << "nickname : ";
+		std::getline(std::cin >> std::ws, this->nickname);
+		for(i = 0; i< (int)this->nickname.length(); i++)
+		{
+			if (!isprint(this->nickname[i]))
+			{
+				std::cout << "Is not alfanumerique !" << std::endl;
+				break;
+			}
+		}
+		if (i == (int)this->nickname.length())
+			break;
+		if (std::cin.eof())
+			return (0);
+	}
+	while (1)
+	{
+		std::cout << "phone number : ";
 		std::getline(std::cin >> std::ws, this->p_number);
 		for(i = 0; i < (int)this->p_number.length(); i++)
 		{
@@ -29,10 +74,26 @@ int	Contact::set_contact()
 		}
 		if (!this->p_number[i])
 			break;
+		if (std::cin.eof())
+			return (0);
 	}
-
-	std::cout << "darkest secret : ";
-	std::getline(std::cin >> std::ws, this->d_secret);
+	while (1)
+	{
+		std::cout << "darkest secret : ";
+		std::getline(std::cin >> std::ws, this->d_secret);
+		for(i = 0; i< (int)this->d_secret.length(); i++)
+		{
+			if (!isprint(this->d_secret[i]))
+			{
+				std::cout << "Is not alfanumerique !" << std::endl;
+				break;
+			}
+		}
+		if (i == (int)this->d_secret.length())
+			break;
+		if (std::cin.eof())
+			return (0);
+	}
 	std::cout << "========================================" << std::endl;
 	if (std::cin.eof())
 		return (0);
@@ -58,5 +119,5 @@ std::string	Contact::get_dsecret(){return this->d_secret;}
 
 Contact::~Contact()
 {
-	std::cout << "" << std::endl;
+	std::cout << "Contact Destructor called" << std::endl;
 }

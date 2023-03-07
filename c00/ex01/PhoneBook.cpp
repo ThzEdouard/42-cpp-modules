@@ -56,7 +56,32 @@ int	PhoneBook::view_rep()
 		std::cout << std::endl;
 	}
 	std::cout << "|================================================================|" << std::endl;
-	std::getline(std::cin >> std::ws, opcontactor);
+	std::cout << "input to index to check 0 . 7 : ";
+	while (1)
+	{
+		int i;
+		std::getline(std::cin >> std::ws, opcontactor);
+		for(i = 0; i < (int)opcontactor.length(); i++)
+		{
+			if (!isdigit(opcontactor[i]))
+			{
+				std::cout << "index is not alfa numerique 0 . 7 !" << std::endl;
+				break;
+			}
+		}
+		if (!opcontactor[i])
+		{
+			if (atoi(opcontactor.c_str()) > (this->in - 1))
+			{
+				std::cout << "index is not existing !" << std::endl;
+				continue;
+			}
+			break;
+		}
+		if (std::cin.eof())
+			return (1);
+		std::cout << "index to check 0 . 7 : ";
+	}
 	this->contact[atoi(opcontactor.c_str())].view_contact();
 	return (0);
 }

@@ -10,6 +10,7 @@ int	main(void)
 	index = 0;
 	while (1)
 	{
+		std::cout << "Command : ADD, SEARCH, EXIT" << std::endl;
 		std::getline(std::cin >> std::ws, input);
 		if (std::cin.eof())
 			break;
@@ -18,9 +19,12 @@ int	main(void)
 		else if (input == "ADD")
 			index = rep.set_contact(index);
 		else if (input == "SEARCH")
-			rep.view_rep();
+		{
+			if (rep.view_rep())
+				break;
+		}
 		else
-			std::cout << "ADD, SEARCH, EXIT";
+			std::cout << "Command not font" << std::endl;
 		if (index == -1)
 			break ;
 	}
