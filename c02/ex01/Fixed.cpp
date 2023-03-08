@@ -22,7 +22,7 @@ Fixed::Fixed(int const i)
 Fixed::Fixed(float const i)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_a = i * (1 << _b);
+	this->_a = int(roundf(i * (1 << _b)));
 }
 
 int Fixed::getRawBits(void) const
@@ -39,7 +39,7 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-	return (this->_a / (1 << _b));
+	return float (this->_a) / (1 << _b);
 }
 
 int Fixed::toInt(void) const
@@ -54,6 +54,6 @@ Fixed::~Fixed()
 
 std::ostream &operator<<(std::ostream &os, Fixed const &val)
 {
-	os << val.getRawBits();
+	os << val.toFloat();
 	return os;
 }
