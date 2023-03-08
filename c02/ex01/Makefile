@@ -1,4 +1,4 @@
-NAME = BraiiiiiiinnnzzzZ
+NAME = ex01
 SRC_DIR		= ./
 OBJ_DIR = obj/
 CC = c++
