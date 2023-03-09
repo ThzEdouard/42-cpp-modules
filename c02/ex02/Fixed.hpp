@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -19,6 +20,16 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 	~Fixed();
+	bool &operator>(Fixed const &val);
+	bool &operator<(Fixed const &val);
+	bool &operator>=(Fixed const &val);
+	bool &operator<=(Fixed const &val);
+	bool &operator==(Fixed const &val);
+	bool &operator!=(Fixed const &val);
+	Fixed &operator+(Fixed const &val);
+	Fixed &operator-(Fixed const &val);
+	Fixed &operator*(Fixed const &val);
+	Fixed &operator/(Fixed const &val);
 
 };
 

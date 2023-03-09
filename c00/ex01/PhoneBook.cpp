@@ -56,7 +56,7 @@ int	PhoneBook::view_rep()
 		std::cout << std::endl;
 	}
 	std::cout << "|================================================================|" << std::endl;
-	std::cout << "input to index to check 0 . 7 : ";
+	std::cout << "input to index to check 0 . 7 (9 : quit) : ";
 	while (1)
 	{
 		int i;
@@ -71,6 +71,8 @@ int	PhoneBook::view_rep()
 		}
 		if (!opcontactor[i])
 		{
+			if (atoi(opcontactor.c_str()) == 9)
+				break ;
 			if (atoi(opcontactor.c_str()) > (this->in - 1))
 			{
 				std::cout << "index is not existing !" << std::endl;
@@ -82,6 +84,7 @@ int	PhoneBook::view_rep()
 			return (1);
 		std::cout << "index to check 0 . 7 : ";
 	}
-	this->contact[atoi(opcontactor.c_str())].view_contact();
+	if (atoi(opcontactor.c_str()) != 9)
+		this->contact[atoi(opcontactor.c_str())].view_contact();
 	return (0);
 }
