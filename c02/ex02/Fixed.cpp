@@ -52,48 +52,103 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
+
+bool Fixed::operator>(Fixed const &val)
+{
+    return this->_a > val._a;
+}
+
+bool Fixed::operator<(Fixed const &val)
+{
+    return this->_a < val._a;
+}
+
+bool Fixed::operator>=(Fixed const &val)
+{
+    return this->_a >= val._a;
+}
+bool Fixed::operator<=(Fixed const &val)
+{
+    return this->_a <= val._a;
+}
+bool Fixed::operator==(Fixed const &val)
+{
+    return this->_a == val._a;
+}
+bool Fixed::operator!=(Fixed const &val)
+{
+    return this->_a != val._a;
+}
+
+Fixed Fixed::operator+(Fixed const &val)
+{
+    Fixed ret;
+    ret.setRawBits(this->_a + val._a);
+    return ret;
+}
+Fixed Fixed::operator-(Fixed const &val)
+{
+    Fixed ret;
+    ret.setRawBits(this->_a - val._a);
+    return ret;
+}
+Fixed Fixed::operator*(Fixed const &val)
+{
+    Fixed ret;
+    ret.setRawBits(this->_a * val._a);
+    return ret;
+}
+Fixed Fixed::operator/(Fixed const &val)
+{
+    Fixed ret;
+    ret.setRawBits(this->_a / val._a);
+    return ret;
+}
+
+Fixed &Fixed::operator++()
+{
+    this->_a++;
+    return *this;
+}
+Fixed Fixed::operator++(int)
+{
+    return ++*this;
+}
+Fixed &Fixed::operator--()
+{
+    this->_a--;
+    return *this;
+}
+Fixed Fixed::operator--(int)
+{
+    return --*this;
+}
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+    if (a > b)
+        return b;
+    return a;
+}
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+    if (a < b)
+        return b;
+    return a;
+}
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+    if (a._a < b._a)
+        return b;
+    return a;
+}
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+    if (a._a > b._a)
+        return b;
+    return a;
+}
 std::ostream &operator<<(std::ostream &os, Fixed const &val)
 {
 	os << val.toFloat();
 	return os;
-}
-bool Fixed::&operator>(Fixed const &val)
-{
-
-}
-bool Fixed::&operator<(Fixed const &val)
-{
-
-}
-bool Fixed::&operator>=(Fixed const &val)
-{
-
-}
-bool Fixed::&operator<=(Fixed const &val)
-{
-
-}
-bool Fixed::&operator==(Fixed const &val)
-{
-
-}
-bool Fixed::&operator!=(Fixed const &val)
-{
-
-}
-Fixed Fixed::&operator+(Fixed const &val)
-{
-
-}
-Fixed Fixed::&operator-(Fixed const &val)
-{
-
-}
-Fixed Fixed::&operator*(Fixed const &val)
-{
-
-}
-Fixed Fixed::&operator/(Fixed const &val)
-{
-
 }
