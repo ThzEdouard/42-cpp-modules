@@ -61,6 +61,8 @@ int	PhoneBook::view_rep()
 	{
 		int i;
 		std::getline(std::cin >> std::ws, opcontactor);
+		if (std::cin.eof())
+			return (1);
 		for(i = 0; i < (int)opcontactor.length(); i++)
 		{
 			if (!isdigit(opcontactor[i]))
@@ -80,8 +82,7 @@ int	PhoneBook::view_rep()
 			}
 			break;
 		}
-		if (std::cin.eof())
-			return (1);
+
 		std::cout << "index to check 0 . 7 : ";
 	}
 	if (atoi(opcontactor.c_str()) != 9)
