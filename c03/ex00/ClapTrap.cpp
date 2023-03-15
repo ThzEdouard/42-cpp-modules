@@ -9,6 +9,15 @@ ClapTrap::ClapTrap(std::string name)
 	_attack = 0;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &ref)
+{
+	std::cout << "Copy Default constructor called" << std::endl;
+	_name = ref._name;
+	_hit = ref._hit;
+	_energy = ref._energy;
+	_attack = ref._attack;
+}
+
 void ClapTrap::attack(const std::string& target)
 {
 	if (_energy)
@@ -48,4 +57,13 @@ void ClapTrap::beRepaired(unsigned int amount)
 ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
+{
+	_name = ref._name;
+	_hit = ref._hit;
+	_energy = ref._energy;
+	_attack = ref._attack;
+	return *this;
 }
