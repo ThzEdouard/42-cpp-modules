@@ -96,7 +96,7 @@ Fixed Fixed::operator-(Fixed const &val)
 Fixed Fixed::operator*(Fixed const &val)
 {
 	Fixed ret;
-	ret.setRawBits(this->_a * val._a);
+	ret.setRawBits(this->_a * val._a >> _b);
 	return ret;
 }
 
@@ -105,28 +105,6 @@ Fixed Fixed::operator/(Fixed const &val)
 	Fixed ret;
 	ret.setRawBits(this->_a / val._a);
 	return ret;
-}
-
-Fixed &Fixed::operator++()
-{
-	this->_a++;
-	return *this;
-}
-
-Fixed Fixed::operator++(int)
-{
-	return ++*this;
-}
-
-Fixed &Fixed::operator--()
-{
-	this->_a--;
-	return *this;
-}
-
-Fixed Fixed::operator--(int)
-{
-	return --*this;
 }
 
 Fixed &Fixed::min(Fixed &a, Fixed &b)
@@ -156,9 +134,39 @@ const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 		return b;
 	return a;
 }
+Fixed &Fixed::operator=(const Fixed &ref)
+{
+	_a = ref._a;
+	return *this;
+}
 
 std::ostream &operator<<(std::ostream &os, Fixed const &val)
 {
 	os << val.toFloat();
 	return os;
+}
+
+Fixed &Fixed::operator++()
+{
+	++this->_a;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed& odl = (*this);
+	++(*this);
+	return odl;
+}
+
+Fixed &Fixed::operator--()
+{
+	--this->_a;
+	return *this;
+}
+Fixed Fixed::operator--(int)
+{
+	Fixed& odl(*this);
+	--(*this);
+	return odl;
 }

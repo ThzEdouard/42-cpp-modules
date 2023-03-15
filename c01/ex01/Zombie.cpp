@@ -1,5 +1,10 @@
 #include "Zombie.hpp"
 
+Zombie::Zombie()
+{
+	
+}
+
 Zombie::Zombie(std::string n)
 {
 	this->name = n;

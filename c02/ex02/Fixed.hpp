@@ -20,6 +20,9 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 	~Fixed();
+
+	Fixed &operator=(const Fixed &ref);
+
 	bool operator>(Fixed const &val);
 	bool operator<(Fixed const &val);
 	bool operator>=(Fixed const &val);

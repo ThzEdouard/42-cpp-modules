@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = ex04
 SRC_DIR		= ./
 OBJ_DIR = obj/
 CC = c++

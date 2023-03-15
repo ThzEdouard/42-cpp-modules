@@ -20,7 +20,7 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 	~Fixed();
-
+	Fixed &operator=(const Fixed &ref);
 };
 
 std::ostream &operator<<(std::ostream &os, Fixed const &val);

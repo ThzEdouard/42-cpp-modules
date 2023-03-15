@@ -27,3 +27,9 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
+
+Fixed &Fixed::operator=(const Fixed &ref)
+{
+	_a = ref._a;
+	return *this;
+}
