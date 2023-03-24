@@ -6,12 +6,12 @@
 class Point
 {
 	private:
-		Fixed *_x;
-		Fixed *_y;
+		Fixed _x;
+		Fixed _y;
 	public:
 		Point();
 		Point(const Point &ref);
-		Point(float const x, float const y);
+		Point(float x, float y);
 		~Point();
         Fixed const getX() const;
         Fixed const getY() const;
