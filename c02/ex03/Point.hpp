@@ -13,7 +13,8 @@ class Point
 		Point(const Point &ref);
 		Point(float const x, float const y);
 		~Point();
-
+        Fixed const getX() const;
+        Fixed const getY() const;
 		Point &operator=(const Point &ref);
 };
 

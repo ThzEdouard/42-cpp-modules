@@ -14,7 +14,7 @@ Point::Point(const Point &ref)
 	this->_y = ref._y;
 }
 
-Point::Point(float const x, float const y)
+Point::Point(float  x, float  y)
 {
 	std::cout << "float Point construtor called ! "<< std::endl;
 	this->_x = new Fixed(x);
@@ -26,4 +26,20 @@ Point::~Point()
 	std::cout << "Point Destrutor called ! " << std::endl;
 	delete this->_x;
 	delete this->_y;
+}
+
+Point& Point::operator=(const Point &ref)
+        {
+    this->_x = ref._x;
+    this->_y = ref._y;
+        }
+
+Fixed const Point::getX() const
+{
+    return this->_x;
+}
+
+Fixed const Point::getY() const
+{
+    return this->_y;
 }
