@@ -12,6 +12,7 @@ private:
 	int _energy;
 	int _attack;
 public:
+    ClapTrap();
 	ClapTrap(std::string);
 	ClapTrap(const ClapTrap &ref);
 	void attack(const std::string& target);

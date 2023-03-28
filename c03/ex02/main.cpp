@@ -1,6 +1,6 @@
 
 # include "ScavTrap.hpp"
-
+# include "FragTrap.hpp"
 # define END    "\x1b[0m"
 # define GREY   "\x1b[30m"
 # define RED    "\x1b[31m"
@@ -43,8 +43,6 @@ int main (void)
     std::cout << PURPLE << "Claptrap ref.John beRepaired 10 or not repaired is not energy !" << END << std::endl;
     Clapjohn.beRepaired(10);
     std::cout << YELOW << "-----> (ScavTrap) <---" << std::endl;
-
-
     std::cout << GREEN << "ScavTrap mode default create !" << END << std::endl;
     ScavTrap Scavdef;
     std::cout << GREEN << "ScavTrap mode (name : john) create !" << END << std::endl;
@@ -61,7 +59,6 @@ int main (void)
     std::cout << PURPLE << "ScavTrap default test attacking for claptrap is dead !" << END << std::endl;
     Scavdef.attack("Xman");
     //end for the test Scavdef(void)
-
     //test for Scavdef name(john)
     std::cout << PURPLE << "ScavTrap jim guardGate mode !" << END << std::endl;
     Scavjim.guardGate();
@@ -79,8 +76,48 @@ int main (void)
     Scavref.attack("Xman");
     std::cout << PURPLE << "ScavTrap ref.jim beRepaired 10 or not repaired is not energy !" << END << std::endl;
     Scavref.beRepaired(10);
-    std::cout  << RED << "ScavTrap(void, jim, ref) and Claptrap called destructor(void, ref, John) ! "
-                         "order Scavtrap and Claptrap !" << END << std::endl;
+
+
+    std::cout << YELOW << "-----> (FragTrap) <---" << std::endl;
+
+
+    std::cout << GREEN << "FragTrap mode default create !" << END << std::endl;
+    FragTrap Fragdef;
+    std::cout << GREEN << "FragTrap mode (name : rene) create !" << END << std::endl;
+    FragTrap Fragrene("rene");
+    //test for FragTrap default(void)
+    std::cout << PURPLE << "FragTrap default attack a 30 target Xman !" << END << std::endl;
+    Fragdef.attack("Xman");
+    std::cout << PURPLE << "FragTrap default highFivesGuys mode !" << END << std::endl;
+    Fragdef.highFivesGuys();
+    std::cout << PURPLE << "FragTrap default take damage 10 !" << END << std::endl;
+    Fragdef.takeDamage(100);
+    std::cout << PURPLE << "FragTrap default beRepaired 10 or not repaired is dead !" << END << std::endl;
+    Fragdef.beRepaired(100);
+    std::cout << PURPLE << "FragTrap default test attacking for claptrap is dead !" << END << std::endl;
+    Fragdef.attack("Xman");
+    //end for the test FragTrap(void)
+
+    //test for FragTrap name(john)
+    std::cout << PURPLE << "FragTrap rene guardGate mode !" << END << std::endl;
+    Fragrene.highFivesGuys();
+    std::cout << PURPLE << "FragTrap rene attack a 30 target Xman 50x!" << END << std::endl;
+    for(int i = 0; i < 100; i++)
+        Fragrene.attack("Xman");
+    std::cout << PURPLE << "FragTrap rene test attacking for claptrap is not energy !" << END << std::endl;
+    Fragrene.attack("Xman");
+    std::cout << PURPLE << "FragTrap rene beRepaired 10 or not repaired is not energy !" << END << std::endl;
+    Fragrene.beRepaired(10);
+    //end for the test FragTrap(john)
+    std::cout << GREEN << "FragTrap mode (ref.name : rene) create !" << END << std::endl;
+    FragTrap Fragref(Fragrene);
+    std::cout << PURPLE << "FragTrap ref.rene test attacking for claptrap is not energy !" << END << std::endl;
+    Fragref.attack("Xman");
+    std::cout << PURPLE << "FragTrap ref.rene beRepaired 10 or not repaired is not energy !" << END << std::endl;
+    Fragref.beRepaired(10);
+
+    std::cout  << RED << "ScavTrap(void, jim, ref), FragTrap(void, rene, ref) and Claptrap called destructor(void, ref, John) ! "
+                         "order (Scavtrap, FragTrap) and Claptrap !" << END << std::endl;
 
 
     return (0);

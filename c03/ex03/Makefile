@@ -1,11 +1,11 @@
-NAME = ex02
+NAME = ex03
 SRC_DIR		= ./
 OBJ_DIR = obj/
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
+CFLAGS = -Wshadow -Wno-shadow -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -rf
 
-FILE =	main ClapTrap ScavTrap FragTrap
+FILE = ClapTrap ScavTrap FragTrap DiamondTrap main
 
 SRC 		= $(addsuffix .cpp, $(FILE))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILE)))
