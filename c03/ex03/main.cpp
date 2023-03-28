@@ -137,7 +137,10 @@ int main (void)
     std::cout << PURPLE << "DiamondTrap default beRepaired 10 or not repaired is dead !" << END << std::endl;
     Diamonddef.beRepaired(100);
     std::cout << PURPLE << "DiamondTrap default test attacking for claptrap is dead !" << END << std::endl;
+
     Diamonddef.attack("Xman");
+    std::cout << PURPLE << "DiamondTrap default whoAmI mode !" << END << std::endl;
+    Diamonddef.whoAmI();
     //end for the test DiamondTrap(void)
 
     //test for DiamondTrap name(koko)
@@ -145,20 +148,23 @@ int main (void)
     Diamondkoko.highFivesGuys();
     Diamondkoko.guardGate();
     std::cout << PURPLE << "DiamondTrap koko attack a 30 target Xman ! (attack ScavTrap)" << END << std::endl;
-    for(int i = 0; i < 100; i++)
+    for(int i = 0; i < 50; i++)
         Diamondkoko.attack("Xman");
     std::cout << PURPLE << "DiamondTrap koko test attacking for claptrap is not energy !" << END << std::endl;
     Diamondkoko.attack("Xman");
     std::cout << PURPLE << "DiamondTrap koko beRepaired 10 or not repaired is not energy !" << END << std::endl;
     Diamondkoko.beRepaired(10);
+    std::cout << PURPLE << "DiamondTrap koko whoAmI mode !" << END << std::endl;
+    Diamondkoko.whoAmI();
     //end for the test DiamondTrap(john)
     std::cout << GREEN << "DiamondTrap mode (ref.name : koko) create !" << END << std::endl;
-    Diamond Diamondref(Diamondkoko);
+    DiamondTrap Diamondref(Diamondkoko);
     std::cout << PURPLE << "DiamondTrap ref.name test attacking for claptrap is not energy !" << END << std::endl;
     Diamondref.attack("Xman");
     std::cout << PURPLE << "DiamondTrap ref.name beRepaired 10 or not repaired is not energy !" << END << std::endl;
     Diamondref.beRepaired(10);
-
+    std::cout << PURPLE << "DiamondTrap ref.name whoAmI mode !" << END << std::endl;
+    Diamondref.whoAmI();
     std::cout  << RED << "DiamondTrap(void, koko, ref), ScavTrap(void, jim, ref), FragTrap(void, rene, ref) and Claptrap called destructor(void, ref, John) ! "
                          "order (Scavtrap, FragTrap) and Claptrap !" << END << std::endl;
 

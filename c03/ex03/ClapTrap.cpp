@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap() : _name("default")
 {
-    std::cout << "Default(void) constructor called" << std::endl;
+    std::cout << "ClapTrap Default(void) constructor called" << std::endl;
     _hit = 10;
     _energy = 10;
     _attack = 0;
@@ -10,7 +10,7 @@ ClapTrap::ClapTrap() : _name("default")
 
 ClapTrap::ClapTrap(std::string name) : _name(name)
 {
-	std::cout << "Default("<< _name <<") constructor called" << std::endl;
+	std::cout << "ClapTrap Default("<< _name <<") constructor called" << std::endl;
 	_hit = 10;
 	_energy = 10;
 	_attack = 0;
@@ -18,7 +18,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 
 ClapTrap::ClapTrap(const ClapTrap &ref) : _name(ref._name)
 {
-	std::cout << "Copy Default(ref.name("<< _name <<")) constructor called" << std::endl;
+	std::cout << "ClapTrap Copy Default(ref.name("<< _name <<")) constructor called" << std::endl;
 	_hit = ref._hit;
 	_energy = ref._energy;
 	_attack = ref._attack;

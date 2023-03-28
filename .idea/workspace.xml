@@ -10,34 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ccf5546-c3ab-4e87-8895-a2b4a32788ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/c03/ex02/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/ClapTrap.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/ClapTrap.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/DiamondTrap.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/DiamondTrap.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/FragTrap.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/FragTrap.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/ScavTrap.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/ScavTrap.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c03/ex03/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex00/ClapTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex00/ClapTrap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex00/ClapTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex00/ClapTrap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex00/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex00/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex01/ClapTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex01/ClapTrap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex01/ClapTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex01/ClapTrap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex01/ScavTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex01/ScavTrap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex01/ScavTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex01/ScavTrap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex01/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex01/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/ClapTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/ClapTrap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/ClapTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/ClapTrap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/FragTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/FragTrap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/FragTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/FragTrap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/ScavTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/ScavTrap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c03/ex02/ScavTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex02/ScavTrap.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/CPP_Piscine" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/ClapTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/ClapTrap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/DiamondTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/DiamondTrap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/FragTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/FragTrap.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/ScavTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/ScavTrap.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/obj/ClapTrap.o" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/obj/ClapTrap.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/obj/FragTrap.o" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/obj/FragTrap.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c03/ex03/obj/ScavTrap.o" beforeDir="false" afterPath="$PROJECT_DIR$/c03/ex03/obj/ScavTrap.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +71,7 @@
       <updated>1678312370392</updated>
       <workItem from="1678312372550" duration="1063000" />
       <workItem from="1678435057041" duration="7620000" />
-      <workItem from="1679403487057" duration="42299000" />
+      <workItem from="1679403487057" duration="42883000" />
     </task>
     <servers />
   </component>
