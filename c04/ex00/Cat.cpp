@@ -1,34 +1,33 @@
+//
+// Created by Edouard Flaquet on 29/03/2023.
+//
+
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : Animal("Cat")
 {
-	type = "Cat";
-	std::cout << "Cat consturtor called" << std::endl;
+    std::cout << "Cat(void) constructor called !" << std::endl;
 }
-
-Cat::Cat(const Cat &ref)
+Cat::Cat(std::string ty) : Animal(ty)
 {
-	type = ref.type;
-	std::cout << "Copy Cat consturtor called" << std::endl;
+    std::cout << "Cat("<< type <<") constructor called !" << std::endl;
 }
-
-std::string Cat::getType() const
+Cat::Cat(const Cat &ref) : Animal(ref.type)
 {
-	return (type);
+    std::cout << "Cat("<< type << ") copy constructor called !" << std::endl;
+}
+Cat::~Cat()
+{
+    std::cout << "Cat("<< type <<") Destructor called !" << std::endl;
 }
 
 void Cat::makeSound() const
 {
-	std::cout << "Meaw" << std::endl;
+    std::cout << "Meow" << std::endl;
 }
 
-const Cat &Cat::operator=(const Cat &ref)
+Cat &Cat::operator=(const Cat &ref)
 {
-	type = ref.type;
-	return *this;
-}
-
-Cat::~Cat()
-{
-	std::cout << "Cat destuructor called" << std::endl;
+    type = ref.type;
+    return *this;
 }

@@ -1,34 +1,33 @@
+//
+// Created by Edouard Flaquet on 29/03/2023.
+//
+
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal("Dog")
 {
-	type = "Dog";
-	std::cout << "Dog consturtor called" << std::endl;
+   std::cout << "Dog(void) constructor called !" << std::endl;
 }
 
-Dog::Dog(const Dog &ref)
+Dog::Dog(std::string ty) : Animal(ty)
 {
-	type = ref.type;
-	std::cout << "Copy Dog consturtor called" << std::endl;
+    std::cout << "Dog("<< type <<") constructor called !" << std::endl;
 }
-
-std::string Dog::getType() const
+Dog::Dog(const Dog &ref) : Animal(ref)
 {
-	return (type);
+    std::cout << "Dog("<< type <<") copy constructor called !" << std::endl;
+}
+Dog::~Dog()
+{
+    std::cout << "Dog("<< type <<") destructor called !" << std::endl;
+}
+Dog &Dog::operator=(const Dog &ref)
+{
+    type = ref.type;
+    return *this;
 }
 
 void Dog::makeSound() const
 {
-	std::cout << "Woff" << std::endl;
-}
-
-const Dog &Dog::operator=(const Dog &ref)
-{
-	type = ref.type;
-	return *this;
-}
-
-Dog::~Dog()
-{
-	std::cout << "Dog destuructor called" << std::endl;
+    std::cout << "Waf" << std::endl;
 }

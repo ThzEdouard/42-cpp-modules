@@ -1,33 +1,32 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type("WrongAnimal")
+WrongAnimal::WrongAnimal() : type("default_animal")
 {
-	std::cout << "WrongAnimal consturtor called" << std::endl;
+    std::cout << "WrongAnimal(void) Constructor called !" << std::endl;
 }
-
-WrongAnimal::WrongAnimal(const WrongAnimal &ref)
+WrongAnimal::WrongAnimal(std::string ty) : type(ty)
 {
-	type = ref.type;
-	std::cout << "Copy WrongAnimal consturtor called" << std::endl;
+    std::cout << "WrongAnimal("<< type <<") Constructor called !" << std::endl;
 }
-
-std::string WrongAnimal::getType() const
+WrongAnimal::WrongAnimal(const WrongAnimal &ref) : type(ref.type)
 {
-	return (type);
+    std::cout << "WrongAnimal("<< type <<") Copy Constructor called !" << std::endl;
+}
+const WrongAnimal &WrongAnimal::operator=(const WrongAnimal &ref)
+{
+    type = ref.type;
+    return *this;
+}
+WrongAnimal::~WrongAnimal()
+{
+    std::cout << "WrongAnimal("<< type <<") Destructor called !" << std::endl;
 }
 
 void WrongAnimal::makeSound() const
 {
-	std::cout <<  "WrongAnimal" << std::endl;
+    std::cout << "WrongAnimal makeSound("<< type <<") called !" << std::endl;
 }
-
-const WrongAnimal &WrongAnimal::operator=(const WrongAnimal &ref)
+std::string WrongAnimal::getType() const
 {
-	type = ref.type;
-	return *this;
-}
-
-WrongAnimal::~WrongAnimal()
-{
-	std::cout << "WrongAnimal destuructor called" << std::endl;
+    return (type);
 }

@@ -1,17 +1,20 @@
 #ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-# include "WrongAnimal.hpp"
+#include "WrongAnimal.hpp"
 
-class WrongCat : public WrongAnimal
-{
-	public:
-		WrongCat();
-		WrongCat(const WrongCat &ref);
-		~WrongCat();
-		std::string getType() const;
-		void makeSound() const ;
-		const WrongCat &operator=(const WrongCat &ref);
+class WrongCat : public WrongAnimal{
+
+public:
+    WrongCat();
+    WrongCat(std::string);
+    WrongCat(const WrongCat &ref);
+    ~WrongCat();
+    WrongCat &operator=(const WrongCat &ref);
+
+    void makeSound() const;
+
 };
+
 
 #endif

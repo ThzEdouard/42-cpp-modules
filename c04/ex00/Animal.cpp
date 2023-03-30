@@ -1,32 +1,32 @@
 #include "Animal.hpp"
 
-Animal::Animal() : type("Animal")
+Animal::Animal() : type("default_animal")
 {
-	std::cout << "Animal consturtor called" << std::endl;
+    std::cout << "Animal(void) Constructor called !" << std::endl;
 }
-
+Animal::Animal(std::string ty) : type(ty)
+{
+    std::cout << "Animal("<< type <<") Constructor called !" << std::endl;
+}
 Animal::Animal(const Animal &ref) : type(ref.type)
 {
-	std::cout << "Copy Animal consturtor called" << std::endl;
+    std::cout << "Animal("<< type <<") Copy Constructor called !" << std::endl;
+}
+const Animal &Animal::operator=(const Animal &ref)
+{
+    type = ref.type;
+    return *this;
+}
+Animal::~Animal()
+{
+    std::cout << "Animal("<< type <<") Destructor called !" << std::endl;
 }
 
 void Animal::makeSound() const
 {
-	std::cout << "Animal" << std::endl;
+    std::cout << "Animal makeSound("<< type <<") called !" << std::endl;
 }
-
 std::string Animal::getType() const
 {
-	return (type);
-}
-
-const Animal &Animal::operator=(const Animal &ref)
-{
-	type = ref.type;
-	return *this;
-}
-
-Animal::~Animal()
-{
-	std::cout << "Animal destuructor called" << std::endl;
+    return (type);
 }

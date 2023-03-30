@@ -5,7 +5,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -rf
 
-FILE = Animal Cat Dog main
+FILE = Animal Cat Dog WrongAnimal WrongCat main
 
 SRC 		= $(addsuffix .cpp, $(FILE))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILE)))

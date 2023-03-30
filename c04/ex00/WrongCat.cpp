@@ -1,30 +1,28 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()
+WrongCat::WrongCat() : WrongAnimal("Cat")
 {
-	type = "WrongCat";
-	std::cout << "WrongCat consturtor called" << std::endl;
+    std::cout << "WrongCat(void) constructor called !" << std::endl;
 }
-WrongCat::WrongCat(const WrongCat &ref)
+WrongCat::WrongCat(std::string ty) : WrongAnimal(ty)
 {
-	type = ref.type;
-	std::cout << "Copy WrongCat consturtor called" << std::endl;
+    std::cout << "WrongCat("<< type <<") constructor called !" << std::endl;
 }
-
-std::string WrongCat::getType() const
+WrongCat::WrongCat(const WrongCat &ref) : WrongAnimal(ref.type)
 {
-	return (type);
-}
-void WrongCat::makeSound() const
-{
-	std::cout << "Meaw" << std::endl;
-}
-const WrongCat &WrongCat::operator=(const WrongCat &ref)
-{
-	type = ref.type;
-	return *this;
+    std::cout << "WrongCat("<< type << ") copy constructor called !" << std::endl;
 }
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat destuructor called" << std::endl;
+    std::cout << "WrongCat("<< type <<") Destructor called !" << std::endl;
+}
+void WrongCat::makeSound() const
+{
+    std::cout << "Meow" << std::endl;
+}
+
+WrongCat &WrongCat::operator=(const WrongCat &ref)
+{
+    type = ref.type;
+    return *this;
 }
