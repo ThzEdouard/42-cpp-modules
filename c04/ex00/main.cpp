@@ -18,31 +18,28 @@
 int main(void)
 {
     std::cout << YELOW << "Creating constructor for the class Animal(void), Cat(luna), Dog(reglise) !" << END << std::endl;
-    Animal animal;
-    Dog reglise("reglise");
-    Cat luna("luna");
-    std::cout << GREEN << "Creating constructor copy for the class Animal, Cat, Dog !" << END << std::endl;
-    Animal canimal(animal);
-    Dog creglise(reglise);
-    Cat cluna(luna);
+    Animal *animal = new Animal();
+    Animal *reglise = new Dog("reglise");
+    Animal *luna = new Cat("luna");
     std::cout << GREEN << "called the function makeSound for the class ! (Animal, Cat, Dog)" << END << std::endl;
-    animal.makeSound();
-    luna.makeSound();
-    reglise.makeSound();
-    std::cout << GREEN << "called the function makeSound for the copy class ! (Animal, Cat, Dog)" << END << std::endl;
-    canimal.makeSound();
-    cluna.makeSound();
-    creglise.makeSound();
-    std::cout << BLUE << "called type for the Animal("<< animal.getType() <<") ans called for the copy Animal("<<canimal.getType()<< ") !" << END << std::endl;
-    std::cout << BLUE << "called type for the Cat("<< luna.getType() <<") ans called for the copy Cat("<<cluna.getType()<< ") !" << END << std::endl;
-    std::cout << BLUE << "called type for the Dog("<< reglise.getType() <<") ans called for the copy Dog("<<creglise.getType()<< ") !" << END << std::endl;
-
+    animal->makeSound();
+    luna->makeSound();
+    reglise->makeSound();
+    std::cout << BLUE << "called type for the Animal("<< animal->getType() <<") !" << END << std::endl;
+    std::cout << BLUE << "called type for the Cat("<< luna->getType() <<") !" << END << std::endl;
+    std::cout << BLUE << "called type for the Dog("<< reglise->getType() <<") !" << END << std::endl;
+    std::cout << RED << "destructor called for the class !(Animal, Cat, Dog)" << END << std::endl;
+    delete animal;
+    delete luna;
+    delete reglise;
     std::cout << YELOW << "creating WrongAnimal and WrongCat testing the class is not virtual void makeSound()"<< END << std::endl;
-    WrongAnimal wanimal("vache");
-    WrongCat wcat("cat");
+    WrongAnimal *wanimal = new WrongCat();
+    WrongCat *wcat = new WrongCat("luna");
     std::cout << GREEN << "WrongAnimal and WrongCat called getType and makeSound " << END << std::endl;
-    std::cout << "WrongAnimal type " << wanimal.getType() << " makeSound "; wanimal.makeSound();
-    std::cout << "WrongCat type " << wcat.getType() << " makeSound "; wcat.makeSound();
-    std::cout << RED << "destructor called for the class !" << END << std::endl;
+    std::cout << "WrongAnimal type " << wanimal->getType() << " makeSound "; wanimal->makeSound();
+    std::cout << "WrongCat type " << wcat->getType() << " makeSound "; wcat->makeSound();
+    std::cout << RED << "destructor called for the class !(WrongAnimal, WrongCat)" << END << std::endl;
+    delete wanimal;
+    delete wcat;
     return (0);
 }
