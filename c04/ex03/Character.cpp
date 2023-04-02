@@ -30,7 +30,7 @@ Character::~Character()
     std::cout << "Character destructor called !" << std::endl;
     for(int i = 0; i < 4; i++)
         if (_inv[i])
-            delete &_inv[i];
+            delete _inv[i];
 }
 
 std::string const & Character::getName() const

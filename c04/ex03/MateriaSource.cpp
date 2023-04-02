@@ -11,7 +11,7 @@ MateriaSource::MateriaSource(const MateriaSource &ref)
 {
     std::cout << "MateriaSource copy constructor called !" << std::endl;
     for(int i = 0; i < 4; i++)
-        _materia[i] = (ref._materia[i]) ? ref._materia[i]->clone() : NULL;
+        _materia[i] = ((ref._materia[i]) ? ref._materia[i]->clone() : NULL);
 }
 
 MateriaSource::~MateriaSource()
@@ -19,7 +19,7 @@ MateriaSource::~MateriaSource()
     std::cout << "MateriaSource destructor called !" << std::endl;
     for(int i = 0; i < 4; i++)
         if (_materia[i])
-            delete &_materia[i];
+            delete _materia[i];
 }
 MateriaSource &MateriaSource::operator=(const MateriaSource &ref)
 {
@@ -27,7 +27,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &ref)
     {
         this->~MateriaSource();
         for(int i = 0; i < 4; i++)
-            _materia[i] = (ref._materia[i]) ? ref._materia[i]->clone() : NULL;
+            _materia[i] = ((ref._materia[i]) ? ref._materia[i]->clone() : NULL);
     }
     return *this;
 }
