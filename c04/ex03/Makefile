@@ -1,11 +1,11 @@
-NAME = ex01
+NAME = ex03
 SRC_DIR		= ./
 OBJ_DIR = obj/
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -rf
 
-FILE = Animal Cat Dog Brain main
+FILE = MateriaSource  Character  Ice Cure AMateria main
 
 SRC 		= $(addsuffix .cpp, $(FILE))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILE)))

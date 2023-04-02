@@ -13,11 +13,10 @@ public:
     Animal(std::string);
     Animal(const Animal &ref);
     const Animal &operator=(const Animal &ref);
-    virtual ~Animal();
-
+    virtual ~Animal() = 0;
     virtual void makeSound() const;
     std::string getType() const;
 };
 
 
-#endif
+#endif //ANIMAL_HPP
