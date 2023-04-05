@@ -25,17 +25,18 @@ int main(void)
         ((i < 5) ? animal[i] = new Dog() : animal[i] = new Cat());
     Dog copy_dog(*(Dog*)animal[dog_x]);
     Cat copy_cat(*(Cat*)animal[cat_y]);
-    std::cout << YELOW << "Check in to the copy Dog !" << END << std::endl;
+    std::cout << YELOW << "Check in to the copy cat !" << END << std::endl;
     for(int i = 0; i < 100; i++)
     {
-        if (std::strcmp(copy_cat.getBrain()->getIdeas(i).c_str(), ((Cat *)animal[cat_y])->getBrain()->getIdeas(i).c_str()) != 0)
-            return (std::cout << RED << "A difference in cat was found" << END << std::endl,0);
+        if (copy_cat.getBrain()->getIdeas(i) != ((Cat *)animal[cat_y])->getBrain()->getIdeas(i))
+            return (std::cout << RED << "A difference in cat was found cat" << END << std::endl,0);
     }
     std::cout << GREEN << "The cat has no difference" << END << std::endl;
+	std::cout << YELOW << "Check in to the copy dog !" << END << std::endl;
     for(int i = 0; i < 100; i++)
     {
-        if (std::strcmp(copy_dog.getBrain()->getIdeas(i).c_str(), ((Dog *)animal[dog_x])->getBrain()->getIdeas(i).c_str()) != 0)
-            return (std::cout << RED << "A difference in dog was found" << END << std::endl,0);
+        if (copy_dog.getBrain()->getIdeas(i) != ((Dog *)animal[dog_x])->getBrain()->getIdeas(i))
+            return (std::cout << RED << "A difference in dog was found dog" << END << std::endl,0);
     }
     std::cout << GREEN << "The dog has no difference" << END << std::endl;
     for (int i = 0; i < 10; i++)

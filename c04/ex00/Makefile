@@ -9,23 +9,21 @@ FILE = Animal Cat Dog WrongAnimal WrongCat main
 
 SRC 		= $(addsuffix .cpp, $(FILE))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILE)))
-OBJF	=	.cache_exists
 DEP = $(OBJ:%.o=%.d)
 
 all:		$(NAME)
-			@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $<
 
 $(NAME):	$(OBJ)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+			@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $(NAME)
 
 -include $(DEP)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp | $(OBJF)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 			@echo "\033[0;32m [OK] \033" $<
+			mkdir -p $(OBJ_DIR)
 			$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJF):
-			mkdir -p $(OBJ_DIR)
 
 clean:
 			$(RM) -rf $(OBJ_DIR)

@@ -33,6 +33,7 @@ Brain *Cat::getBrain() const
 Cat &Cat::operator=(const Cat &ref)
 {
     type = ref.type;
+	delete _brain;
     _brain = new Brain(*ref._brain);
     return *this;
 }
