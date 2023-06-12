@@ -22,3 +22,9 @@ void	RobotomyRequestForm::execute(const Bureaucrat &ref) const
 	else
 		 std::cout << "Robotomy failed for " << _target << "!" << std::endl;
 }
+
+std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &ref)
+{
+    out << "Robotomy Creation Form: " << ref.getName() << ", grade to sign: " << ref.getGradeToSign() << ", grade to execute: " << ref.getGradeToExecute() << ", signed: " << ref.getSigned() << std::endl;
+    return out;
+}

@@ -18,3 +18,9 @@ void	PresidentialPardonForm::execute(const Bureaucrat &ref) const
 		throw AForm::GradeTooLowException();
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
+
+std::ostream &operator<<(std::ostream &out, const PresidentialPardonForm &ref)
+{
+    out << "Presidential Creation Form: " << ref.getName() << ", grade to sign: " << ref.getGradeToSign() << ", grade to execute: " << ref.getGradeToExecute() << ", signed: " << ref.getSigned() << std::endl;
+    return out;
+}

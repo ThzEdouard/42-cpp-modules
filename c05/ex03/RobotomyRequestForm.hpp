@@ -2,6 +2,7 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
+#include <math.h>
 
 class RobotomyRequestForm : public AForm
 {

@@ -19,6 +19,12 @@ void	RobotomyRequestForm::execute(const Bureaucrat &ref) const
 	std::cout << " drilling noises" << std::endl;
 	if (rand() % 2)
 		std::cout << _target << " has been robotomized successfull!" << std::endl;
-	else 
+	else
 		 std::cout << "Robotomy failed for " << _target << "!" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &ref)
+{
+    out << "Robotomy Creation Form: " << ref.getName() << ", grade to sign: " << ref.getGradeToSign() << ", grade to execute: " << ref.getGradeToExecute() << ", signed: " << ref.getSigned() << std::endl;
+    return out;
 }
