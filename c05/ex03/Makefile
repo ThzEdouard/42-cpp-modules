@@ -5,7 +5,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -rf
 
-FILE = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm
+FILE = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm Intern
 
 SRC 		= $(addsuffix .cpp, $(FILE))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILE)))
