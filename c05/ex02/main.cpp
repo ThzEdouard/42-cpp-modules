@@ -8,12 +8,12 @@ int main ()
     std::cout << "\n*** Test 01 ***"  << std::endl;
     try
     {
-        PresidentialPardonForm Jean("Jean");
-        Bureaucrat Amanasse("Amanasse", 26);
-        std::cout << Amanasse << std::endl;
-        std::cout << Jean << std::endl;
-        Amanasse.signAForm(Jean);
-        Amanasse.executeForm(Jean);
+        PresidentialPardonForm coco("coco");
+        Bureaucrat doudou("doudou", 26);
+        std::cout << doudou << std::endl;
+        std::cout << coco << std::endl;
+        doudou.signAForm(coco);
+        doudou.executeForm(coco);
     }
     catch (std::exception & e)
     {
@@ -24,12 +24,12 @@ int main ()
     std::cout << "\n*** Test 02 ***"  << std::endl;
     try
     {
-        Bureaucrat MedeSou("MedeSou", 1);
-        RobotomyRequestForm Jacques("Jacques");
-        std::cout << MedeSou << std::endl;
-        std::cout << Jacques << std::endl;
-        MedeSou.signAForm(Jacques);
-        MedeSou.executeForm(Jacques);
+        Bureaucrat fla("fla", 1);
+        RobotomyRequestForm elo("elo");
+        std::cout << fla << std::endl;
+        std::cout << elo << std::endl;
+        fla.signAForm(elo);
+        fla.executeForm(elo);
     }
     catch (std::exception & e)
     {
@@ -40,15 +40,15 @@ int main ()
     std::cout << "\n*** Test 03 ***"  << std::endl;
     try
     {
-        Bureaucrat Juchene("Juchene", 75);
-        ShrubberyCreationForm Shrub("Giles");
+        Bureaucrat jim("jim", 75);
+        ShrubberyCreationForm lola("Giles");
 
-        std::cout << Juchene << std::endl;
-        std::cout << Shrub << std::endl;
+        std::cout << jim << std::endl;
+        std::cout << lola << std::endl;
 
-        Juchene.signAForm(Shrub);
-        Juchene.executeForm(Shrub);
-        std::cout << Shrub << std::endl;
+        jim.signAForm(lola);
+        jim.executeForm(lola);
+        std::cout << lola << std::endl;
     }
     catch (std::exception & e)
     {

@@ -13,12 +13,12 @@ int	main()
 		AForm* rrf;
 		rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
 
-		Bureaucrat Amanasse("Amanasse", 26);
+		Bureaucrat doudou("doudou", 26);
 
 		if (rrf)
 		{
-			Amanasse.signAForm(*rrf);
-			Amanasse.executeForm(*rrf);
+			doudou.signAForm(*rrf);
+			doudou.executeForm(*rrf);
 		}
 		delete (rrf);
 	}
@@ -34,12 +34,12 @@ int	main()
 		AForm* ptr;
 		ptr = RandomIntern.makeForm("PresidentialPardonForm", "LOL");
 
-		Bureaucrat Juchene("Juchene", 1);
+		Bureaucrat coco("coco", 1);
 
 		if(ptr)
 		{
-			Juchene.signAForm(*ptr);
-			Juchene.executeForm(*ptr);
+			coco.signAForm(*ptr);
+			coco.executeForm(*ptr);
 		}
 		delete ptr;
 	}
