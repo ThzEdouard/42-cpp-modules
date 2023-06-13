@@ -6,21 +6,18 @@
 
 class ScalarConverter
 {
-private:
-	char	_char;
-	int		_int;
-	float	_float;
-	double	_double;
 public:
-	ScalarConverter(const std::string &);
+	ScalarConverter();
 	ScalarConverter(const ScalarConverter &);
 	~ScalarConverter();
 	const ScalarConverter &operator=(const ScalarConverter &);
 
-	static char		getChar();
-	static int		getInt();
-	static float	getFloat() ;
-	static double	getDouble() ;
+	static void	convert(std::string &);
+
+	static char		getConvertChar(std::string &) ;
+	static int		getConvertInt(std::string &) ;
+	static float	getConvertFloat(std::string &) ;
+	static double	getConvertDouble(std::string &) ;
 
 };
 
