@@ -5,21 +5,28 @@
 # include <string>
 
 class ScalarConverter
-{
+{ 
+private:
+	std::string _str;
+	
+	char		_char;
+	int			_int;
+	float		_float;
+	double		_double;
+
+	bool			_unknown_type;
+
+	bool			_minus_inf;
+	bool			_null;
+	bool			_plus_inf;
+	bool			_overflow;
 public:
-	ScalarConverter();
+	ScalarConverter(std::string &);
 	ScalarConverter(const ScalarConverter &);
 	~ScalarConverter();
 	const ScalarConverter &operator=(const ScalarConverter &);
-
-	static void	convert(std::string &);
-
-	static char		getConvertChar(std::string &) ;
-	static int		getConvertInt(std::string &) ;
-	static float	getConvertFloat(std::string &) ;
-	static double	getConvertDouble(std::string &) ;
-
 };
 
+std::ostream & operator << (std::ostream &, ScalarConverter const &);
 
 #endif
