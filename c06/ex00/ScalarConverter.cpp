@@ -1,151 +1,18 @@
 #include "ScalarConverter.hpp"
 
-bool	isChar(std::string str)
+ScalarConverter::ScalarConverter(std::string str) : _str(str), _unknown(false), _overflow(false), _mininff(false), _nan(false), _maxinff(false)
 {
-	if (str.length() != 1 || isdigit(str[0]) != 0)
-		return (false);
-	return (true);
-}
 
-bool isInt(std::string str)
-{
-	for (size_t i = 0 ; i < str.length() ; i++)
-	{
-		if (i == 0 && (str[i] == '+' || str[i] == '-'))
-			continue ;
-		else if (isdigit(str[i]) == false)
-			return (false);
-	}
-	return (true);
-}
-
-bool isFloat(std::string str)
-{
-	int	number_of_points = 0;
-
-	if (str == "-inff" || str == "nanf" || str == "+inff")
-		return (true);
-	if (str[str.length() - 1] != 'f')
-		return (false);
-	for (size_t i = 0 ; i < str.length() - 1 ; i++)
-	{
-		if (i == 0 && (str[i] == '+' || str[i] == '-'))
-			continue ;
-		else if (isdigit(str[i]) == false)
-		{
-			if (str[i] == '.' && ++number_of_points == 1)
-				continue ;
-			else
-				return (false);
-		}
-	}
-	return (true);
-}
-
-bool	isDouble(std::string str)
-{
-	int	number_of_points = 0;
-
-	if (str == "-inf" || str == "nan" || str == "+inf")
-		return (true);
-	for (size_t i = 0 ; i < str.length() ; i++)
-	{
-		if (i == 0 && (str[i] == '+' || str[i] == '-'))
-			continue ;
-		else if (isdigit(str[i]) == false)
-		{
-			if (str[i] == '.' && ++number_of_points == 1)
-				continue ;
-			else
-				return (false);
-		}
-	}
-	return (true);
-}
-
-ScalarConverter::ScalarConverter(std::string &str) : _str(str), _unknown_type(false), _minus_inf(false), _null(false), _plus_inf(false), _overflow(false)
-{
-	if (isChar(_str))
-	{
-		//strtochar
-		_char = _str[0];
-		//convertirchar
-		_int = static_cast<int>(_char);
-		_float = static_cast<float>(_char);
-		_double = static_cast<double>(_char);
-}
-	}
-	else if (isInt(_str))
-	{
-		//strtoint
-		long	tmp;
-
-	tmp = strtol(_str.c_str(), NULL, 0);
-	if (tmp >= INT_MIN && tmp <= INT_MAX)
-		_int = static_cast<int>(tmp);
+	if (this->isChar())
+		this->toChar();
+	else if (this->isInt())
+		this->toInt();
+	else if (this->isFloat())
+		this->toFloat();
+	else if (this->isDouble())
+		this->toDouble();
 	else
-		_overflow = true;
-		//convertirint
-		_char = static_cast<char>(_int);
-	_float = static_cast<float>(_int);
-	_double = static_cast<double>(_int);
-	}
-	else if (isFloat(_str))
-	{
-		//strtofloat
-		char	*end;
-		float	tmp;
-
-	if (_str == "-inff")
-		_minus_inf = true;
-	else if (_str == "nanf")
-		_null = true;
-	else if (_str == "+inff")
-		_plus_inf = true;
-	else
-	{
-		tmp = strtod(_str.c_str(), &end);
-		if ((end == _str.c_str() + (_str.length() - 1)) && *end == 'f'
-			&& tmp >= static_cast<float>(INT_MIN) 
-			&& tmp <= static_cast<float>(INT_MAX))
-			_float = tmp;
-		else
-			_overflow = true;
-	}
-		//convertirfloat
-		_char = static_cast<char>(_float);
-	_int = static_cast<int>(_float);
-	_double = static_cast<double>(_float);
-	}
-	else if (isDouble(_str))
-	{
-		//strtodouble
-		char	*end;
-	float	tmp;
-
-	if (_str == "-inf")
-		_minus_inf = true;
-	else if (_str == "nan")
-		_null = true;
-	else if (_str == "+inf")
-		_plus_inf = true;
-	else
-	{
-		tmp = strtod(_str.c_str(), &end);
-		if (end == _str.c_str() + _str.length()
-			&& tmp >= static_cast<double>(INT_MIN) 
-			&& tmp <= static_cast<double>(INT_MAX))
-			_double = static_cast<double>(tmp);
-		else
-			_overflow = true;
-	}
-		//convertirdouble
-		_char = static_cast<char>(_double);
-	_int = static_cast<int>(_double);
-	_float = static_cast<float>(_double);
-	}
-	else 
-		_unknown_type = true;
+		_unknown = true;
 }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &ref)
@@ -165,89 +32,227 @@ const ScalarConverter &ScalarConverter::operator=(const ScalarConverter &ref)
 		_int = ref._int;
 		_float = ref._float;
 		_double = ref._double;
+		_unknown = ref._unknown;
+		_mininff = ref._mininff;
+		_maxinff = ref._maxinff;
+		_overflow = ref._overflow;
 	}
 	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &os, ScalarConverter const &ref)
 {
-	if (rhs.getError() == true)
-		rhs.displayError(output);
+	if (ref.getError())
+		ref.writeError(os);
 	else
 	{
-		output << "Char    : ";
-		rhs.displayChar(output);
-		output << std::endl;
-		
-		output << "Int     : ";
-		rhs.displayInt(output);
-		output << std::endl;
-		
-		output << "Float   : ";
-		rhs.displayFloat(output);
-		output << std::endl;
-		
-		output << "Double  : ";
-		rhs.displayDouble(output);
-		output << std::endl;
+		ref.writeChar(os);
+		ref.writeInt(os);
+		ref.writeFloat(os);
+		ref.writeDouble(os);
 	}
 	return (os);
 }
 
-bool	Cast::getError(void) const
+bool	ScalarConverter::isChar() const
 {
-	if (_unknown_type || _overflow)
+	if (_str.length() != 1 || isdigit(_str[0]) != 0)
+		return (false);
+	return (true);
+}
+
+bool ScalarConverter::isInt() const
+{
+	for (unsigned long i = 0 ; i < _str.length() ; i++)
+	{
+		if (i == 0 && (_str[i] == '+' || _str[i] == '-'))
+			continue ;
+		else if (!isdigit(_str[i]))
+			return (false);
+	}
+	return (true);
+}
+
+bool ScalarConverter::isFloat() const
+{
+	int	p = 0;
+
+	if (_str == "-inff" || _str == "nanf" || _str == "+inff")
+		return (true);
+	if (_str[_str.length() - 1] != 'f')
+		return (false);
+	for (unsigned long i = 0 ; i < _str.length() - 1 ; i++)
+	{
+		if (i == 0 && (_str[i] == '+' || _str[i] == '-'))
+			continue ;
+		else if (!isdigit(_str[i]))
+		{
+			if (_str[i] == '.' && ++p == 1)
+				continue ;
+			else
+				return (false);
+		}
+	}
+	return (true);
+}
+
+bool	ScalarConverter::isDouble() const
+{
+	int	p = 0;
+
+	if (_str == "-inf" || _str == "nan" || _str == "+inf")
+		return (true);
+	for (unsigned long i = 0 ; i < _str.length() ; i++)
+	{
+		if (i == 0 && (_str[i] == '+' || _str[i] == '-'))
+			continue ;
+		else if (!isdigit(_str[i]))
+		{
+			if (_str[i] == '.' && ++p == 1)
+				continue ;
+			else
+				return (false);
+		}
+	}
+	return (true);
+}
+
+void	ScalarConverter::toChar()
+{
+	_char = _str[0];
+
+	_int = static_cast<int>(_char);
+	_float = static_cast<float>(_char);
+	_double = static_cast<double>(_char);
+}
+
+void	ScalarConverter::toInt()
+{
+	long	tmp;
+
+	tmp = strtol(_str.c_str(), NULL, 0);
+	if (tmp >= INT_MIN && tmp <= INT_MAX)
+		_int = static_cast<int>(tmp);
+	else
+		_overflow = true;
+
+	_char = static_cast<char>(_int);
+	_float = static_cast<float>(_int);
+	_double = static_cast<double>(_int);
+}
+
+void	ScalarConverter::toFloat()
+{
+	char	*end;
+	float	tmp;
+
+	if (_str == "-inff" )
+		_mininff = true;
+	else if (_str == "nanf")
+		_nan = true;
+	else if (_str == "+inff")
+		_maxinff = true;
+	else
+	{
+		tmp = strtod(_str.c_str(), &end);
+		if ((end == _str.c_str() + (_str.length() - 1)) && *end == 'f' && tmp >= FLT_MIN && tmp <= FLT_MAX)
+			_float = tmp;
+		else
+			_overflow = true;
+	}
+
+	_char = static_cast<char>(_float);
+	_int = static_cast<int>(_float);
+	_double = static_cast<double>(_float);
+}
+
+void	ScalarConverter::toDouble()
+{
+	char	*end;
+	float	tmp;
+
+	if (_str == "-inf")
+		_mininff = true;
+	else if (_str == "nan")
+		_nan = true;
+	else if (_str == "+inf")
+		_maxinff = true;
+	else
+	{
+		tmp = strtod(_str.c_str(), &end);
+		if (end == _str.c_str() + _str.length() && tmp >= DBL_MIN && tmp <= DBL_MAX)
+			_double = static_cast<double>(tmp);
+		else
+			_overflow = true;
+	}
+
+	_char = static_cast<char>(_double);
+	_int = static_cast<int>(_double);
+	_float = static_cast<float>(_double);
+}
+
+bool	ScalarConverter::getError() const
+{
+	if (_unknown || _overflow)
 		return (true);
 	else
 		return (false);
 }
 
-void	Cast::displayError(std::ostream & output) const
+void	ScalarConverter::writeError(std::ostream &os) const
 {
-	if (_unknown_type)
-		output << "Error : Cannot convert your input." << std::endl;
+	if (_unknown)
+		os << "Error : conversion is impossible." << std::endl;
 	else if (_overflow)
-		output << "Error : Overflow." << std::endl;
+		os << "Error : Overflow." << std::endl;
 }
 
-void	Cast::displayChar(std::ostream & output) const
+void	ScalarConverter::writeChar(std::ostream & os) const
 {
-	if (_minus_inf || _null || _plus_inf)
-		output << "Impossible";
+	os << "Char: ";
+	if (_mininff || _nan || _maxinff)
+		os << "Impossible";
 	else if (isprint(_char) == 0)
-		output << "Non displayable";
+		os << "Non displayable";
 	else
-		output << _char;
+		os << _char;
+	os << std::endl;
 }
 
-void	Cast::displayInt(std::ostream & output) const
+void	ScalarConverter::writeInt(std::ostream & os) const
 {
-	if (_minus_inf || _null || _plus_inf)
-		output << "Impossible";
+	os << "Int: ";
+	if (_mininff || _nan || _maxinff)
+		os << "Impossible";
 	else
-		output << _int;
+		os << _int;
+	os << std::endl;
 }
 
-void	Cast::displayFloat(std::ostream & output) const
+void	ScalarConverter::writeFloat(std::ostream & os) const
 {
-	if (_minus_inf)
-		output << "-inff";
-	else if (_null)
-		output << "nanf";
-	else if (_plus_inf)
-		output << "+inff";
+	os << "Float: ";
+	if (_mininff)
+		os << "-inff";
+	else if (_nan)
+		os << "nanf";
+	else if (_maxinff)
+		os << "+inff";
 	else
-		output << std::fixed << _float << "f";
+		os << std::fixed << _float << "f";
+	os << std::endl;
 }
 
-void	Cast::displayDouble(std::ostream & output) const
+void	ScalarConverter::writeDouble(std::ostream & os) const
 {
-	if (_minus_inf)
-		output << "-inf";
-	else if (_null)
-		output << "nan";
-	else if (_plus_inf)
-		output << "+inf";
+	os << "Double  : ";
+	if (_mininff)
+		os << "-inff";
+	else if (_nan)
+		os << "nanf";
+	else if (_maxinff)
+		os << "+inff";
 	else
-		output << std::fixed << _double;
+		os << std::fixed << _double;
+	os << std::endl;
 }
