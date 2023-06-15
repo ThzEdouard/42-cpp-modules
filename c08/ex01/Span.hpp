@@ -4,6 +4,9 @@
 # include <iostream>
 # include <vector>
 # include <stdexcept>
+#include <limits>
+#include <cmath>
+#include <algorithm>
 
 class Span
 {
@@ -17,8 +20,10 @@ public:
 	const Span &operator=(const Span &);
 
 	void	addNumber(int);
-	int		shortestSpan();
-	int		longestSpan();
+	int		shortestSpan() const;
+	int		longestSpan() const;
+	template<typename T>
+	void	addNumber(T begin, T end);
 };
 
 #endif

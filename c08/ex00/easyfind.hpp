@@ -10,7 +10,7 @@ typename T::iterator	easyfind(T &container, int target)
 	typename T::iterator it =  std::find(container.begin(), container.end(), target);
 	if (it == container.end())
 		return (container.end());
-	return (it)
+	return (it);
 }
 
 #endif
