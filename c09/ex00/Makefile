@@ -1,11 +1,11 @@
-NAME = ex02
+NAME = btc
 SRC_DIR		= ./
 OBJ_DIR = obj/
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
 RM = rm -rf
 
-FILE = main
+FILE = main BitcoinExchange
 
 SRC 		= $(addsuffix .cpp, $(FILE))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILE)))

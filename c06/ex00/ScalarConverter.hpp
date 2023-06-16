@@ -3,51 +3,48 @@
 
 # include <iostream>
 # include <string>
-# include <math.h>
-# include <limits.h>
-# include <float.h>
+# include <cmath>
+# include <climits>
+# include <cfloat>
 
 class ScalarConverter
 {
 private:
-	std::string _str;
-
-	char		_char;
-	int			_int;
-	float		_float;
-	double		_double;
-
-	bool			_unknown;
-	bool			_overflow;
-
-	bool			_mininff;
-	bool			_nan;
-	bool			_maxinff;
-
+	ScalarConverter();
 public:
-	ScalarConverter(std::string );
-	ScalarConverter(const ScalarConverter &);
-	~ScalarConverter();
-	const ScalarConverter &operator=(const ScalarConverter &);
+	static std::string _str;
 
-	bool	isChar() const;
-	bool	isInt() const;
-	bool	isFloat() const;
-	bool	isDouble() const;
+	static char		_char;
+	static int			_int;
+	static float		_float;
+	static double		_double;
 
-	void	toChar();
-	void	toInt();
-	void	toFloat();
-	void	toDouble();
+	static bool			_unknown;
+	static bool			_overflow;
 
-	bool	getError() const;
-	void	writeError(std::ostream &) const;
-	void	writeChar(std::ostream &) const;
-	void	writeInt(std::ostream &) const;
-	void	writeFloat(std::ostream &) const;
-	void	writeDouble(std::ostream &) const;
+	static bool			_mininff;
+	static bool			_nan;
+	static bool			_maxinff;
+
+	static bool isChar(const std::string &);
+	static bool isInt(const std::string &);
+	static bool isFloat(const std::string &);
+	static bool isDouble(const std::string &);
+
+	static void toChar(const std::string &);
+	static void toInt(const std::string &);
+	static void toFloat(const std::string &);
+	static void toDouble(const std::string &);
+
+	static bool getError();
+	static void writeError(std::ostream &);
+	static void writeChar(std::ostream &);
+	static void writeInt(std::ostream &);
+	static void writeFloat(std::ostream &);
+	static void writeDouble(std::ostream &);
+
+	static void convert(const std::string &);
+
 };
-
-std::ostream & operator << (std::ostream &, ScalarConverter const &);
 
 #endif
