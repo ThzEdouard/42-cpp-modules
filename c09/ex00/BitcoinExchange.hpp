@@ -5,27 +5,24 @@
 # include <fstream>
 # include <sstream>
 # include <string>
-# include <map>
+# include <vector>
 # include <exception>
+# include <algorithm>
 
 class BitcoinExchange
 {
 private:
-	std::map<std::string, float> _btcValue;
-	std::map<std::string, float> _
+	std::vector<std::pair<std::string, double> > _btcValue;
+	std::vector<std::pair<std::string, double> > _inputValue;
 public:
 	BitcoinExchange(const std::string &);
 	BitcoinExchange(const BitcoinExchange &);
 	~BitcoinExchange();
 	const BitcoinExchange &operator=(const BitcoinExchange &);
 
-	const std::map<std::string, float> &getBtcValue() const
-	{
-		return _btcValue;
-	}
-
+	void display() const;
+	double	calculbtc(const std::string &date, double value) const;
+	double	seachValue(const std::string &date) const;
 };
-
-std::ostream &operator<<(std::ostream &, BitcoinExchange const &);
 
 #endif

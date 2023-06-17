@@ -1,38 +1,88 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(const std::string &filePath) : _btcValue()
+BitcoinExchange::BitcoinExchange(const std::string &filePath) : _btcValue(), _inputValue()
 {
-	std::ifstream inputFile(filePath.c_str());
-	if (!inputFile.is_open()) {
+	std::string line;
+	std::ifstream dataValue("data.csv");
+	if (!dataValue.is_open()) {
 		throw std::runtime_error("Error: could not open file");
 	}
-	std::string line;
-	while (std::getline(inputFile, line))
+	while (std::getline(dataValue, line))
 	{
 		std::istringstream iss(line);
 		std::string date;
-		float value;
+		double value;
 		if (std::getline(iss, date, ',') && iss >> value)
-			_btcValue[date] = value;
+		{
+			_btcValue.push_back(std::make_pair(date, value));
+		}
 	}
-	inputFile.close();
+	dataValue.close();
+	std::ifstream inputValue(filePath.c_str());
+	if (!inputValue.is_open()) {
+		throw std::runtime_error("Error: could not open file");
+	}
+	int i = 0;
+	while (std::getline(inputValue, line))
+	{
+		std::istringstream iss(line);
+		std::string date;
+		double value = 0.0;
+		if (std::getline(iss, date, '|') && iss >> value && i != 0)
+		{
+			date.erase(std::remove_if(date.begin(), date.end(), ::isspace), date.end());
+			if (value < 0)
+				date = "Error: not a positive number.";
+			else if (value > 1000)
+				date = "Error: too large a number.";
+			_inputValue.push_back(std::make_pair(date, value));
+		}else if (i != 0)
+		{
+			date.erase(std::remove_if(date.begin(), date.end(), ::isspace), date.end());
+			date = "Error: bad input => " + date;
+			_inputValue.push_back(std::make_pair(date, value));
+		}
+		i++;
+	}
+	inputValue.close();
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &ref) : _btcValue(ref._btcValue) {}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &ref) : _btcValue(ref._btcValue), _inputValue(ref._inputValue) {}
 BitcoinExchange::~BitcoinExchange() {}
 const BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &ref)
 {
 	if (this != &ref)
+	{
 		_btcValue = ref._btcValue;
+		_inputValue = ref._inputValue;
+	}
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &os, BitcoinExchange const &ref)
+void BitcoinExchange::display() const
 {
-	std::map<std::string, float>::const_iterator it;
-	const std::map<std::string, float> &btcValue = ref.getBtcValue();
-	for (it = btcValue.begin(); it != btcValue.end(); ++it) {
-		os << it->first << " => " << it->second << " = " << std::endl;
+	for (size_t i = 0; i < _inputValue.size(); ++i)
+	{
+		if (_inputValue[i].first.find("Error") != std::string::npos)
+			std::cout << _inputValue[i].first << std::endl;
+		else
+			std::cout << _inputValue[i].first << " => " << _inputValue[i].second << " = " << calculbtc(_inputValue[i].first, _inputValue[i].second) << std::endl;
 	}
-	return (os);
+}
+
+double BitcoinExchange::calculbtc(const std::string &date, double value) const
+{
+	return (seachValue(date) * value);
+}
+
+double BitcoinExchange::seachValue(const std::string &date) const
+{
+	for (size_t i = 0; i < _btcValue.size(); ++i)
+	{
+		if (_btcValue[i].first >= date)
+		{
+			return _btcValue[i].second;
+		}
+	}
+	throw std::runtime_error("Error: no matching date found in the database");
 }

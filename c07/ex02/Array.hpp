@@ -41,7 +41,7 @@ public:
 	T	&operator[](unsigned int n)
 	{
 		if (n >= _size)
-			throw std::exception();
+			throw sizeExeception();
 		return (_array[n]);
 	}
 
@@ -49,6 +49,15 @@ public:
 	{
 		return (_size);
 	}
+
+	class sizeExeception : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{
+				return ("Error size !");
+			}
+	};
 };
 
 #endif
