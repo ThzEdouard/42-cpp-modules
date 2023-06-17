@@ -52,10 +52,8 @@ int RPN::checkop(char op)
 	int (RPN::*f[4])(void) = {&RPN::opplus, &RPN::opmoin, &RPN::opmulti, &RPN::opdiv};
 
 	for (int i = 0; i < 4; i++)
-	{
 		if (op == ops[i])
 			return (this->*f[i])();
-	}
 	throw std::exception();
 }
 
@@ -65,7 +63,6 @@ void RPN::calcul(std::string argv)
 	{
 		if (!isValidOperator(*it) && !isValidNumber(*it) && !*(it + 1) && !(*(it + 1) == 32))
 			throw std::runtime_error("Invalid expression: caracter");
-		//std::cout << *it << std::endl;
 		if (isValidOperator(*it))
 		{
 			if (_result.size() < 2)
